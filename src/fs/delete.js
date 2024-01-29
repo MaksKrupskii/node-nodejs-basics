@@ -1,5 +1,13 @@
+import { rm } from 'node:fs/promises'
+
+const url = new URL('files/fileToRemove.txt', import.meta.url);
+
 const remove = async () => {
-    // Write your code here 
+    try {
+        await rm(url)
+    } catch (error) {
+        throw new Error('FS operation failed');
+    }
 };
 
 await remove();
